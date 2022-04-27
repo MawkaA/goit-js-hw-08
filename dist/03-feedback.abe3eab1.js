@@ -566,9 +566,13 @@ var _lodash = _interopRequireDefault(require("lodash.throttle"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const form = document.querySelector('.feedback-form');
-form.addEventListener('input', (0, _lodash.default)(onFormData, 500));
-form.addEventListener('submit', onSubmitForm);
+const refs = {
+  email: document.querySelector('.feedback-form input'),
+  message: document.querySelector('.feedback-form textarea'),
+  form: document.querySelector('.feedback-form')
+};
+refs.form.addEventListener('input', (0, _lodash.default)(onFormData, 500));
+refs.form.addEventListener('submit', onSubmitForm);
 const formData = {};
 
 function onFormData(e) {
@@ -585,12 +589,10 @@ function onSubmitForm(e) {
 
 (function dataFromLocalStorage() {
   const data = JSON.parse(localStorage.getItem('feedback-form-state'));
-  const email = document.querySelector('.feedback-form input');
-  const message = document.querySelector('.feedback-form textarea');
 
   if (data) {
-    email.value = data.email;
-    message.value = data.message;
+    refs.email.value = data.email;
+    refs.message.value = data.message;
   }
 })();
 },{"lodash.throttle":"../node_modules/lodash.throttle/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -621,7 +623,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62012" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51395" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
